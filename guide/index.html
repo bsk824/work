@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>HTML 가이드</title>
+	<link rel="stylesheet" href="src/style.css">
+	<link rel="stylesheet" href="src/shCoreDefault.min.css">
+	<script src="src/shCore.min.js"></script>
+	<script src="src/shBrushCss.min.js"></script>
+	<script src="src/shBrushJScript.min.js"></script>
+	<script src="src/shBrushXml.min.js"></script>
+</head>
+<body>
+	<header class="header">
+		<h1 class="logo"><a href="index.html">GUIDE</a></h1>
+		<nav class="gnb">
+			<a href="#filelist">FILELIST</a>
+			<a href="#guide_html">HTML</a>
+			<a href="#guide_js">JS</a>
+		</nav>
+	</header>
+	<div class="container">
+
+		<div class="table">
+			<table>
+				<colgroup>
+					<col style="width: 200px;">
+					<col>
+				</colgroup>
+				<tbody>
+					<tr>
+						<th scope="row">lang</th>
+						<td>HTML5, SCSS, JS</td>
+					</tr>
+					<tr>
+						<th scope="row">브라우져</th>
+						<td>ie11, 크롬</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+
+	<script>
+		var layer = {
+			obj : {},
+			create : function(arg){
+				var layerTemp = `
+					<div id="${arg.id}" class="layerPopup" data-state="created">
+						<div class="popupWrap">
+							<div class="popupHeader">
+								${arg.title}
+							</div>
+							<div class="popupContents">
+								${arg.content}
+							</div>
+						</div>
+					</div>
+				`
+				document.body.insertAdjacentHTML('beforeend', layerTemp);
+			},
+			open : function(id){
+				var layerWrap = document.querySelector('#'+id);
+				var none = true;
+				layerWrap.classList.add('show');
+				for (var key in layer.obj) {
+					if(key == 'layer'+id) none = false;
+				}
+				if(none) {
+					layerWrap.addEventListener('click', function(){
+						if(event.target.classList.contains('layerPopup')) layer.close();
+					});
+				}
+				layer.obj['layer'+id] = layerWrap;
+			},
+			close : function(id){
+				var target;
+				if(id) {
+					target = doucment.querySelector('#'+id);
+				} else {
+					target = event.target;
+					id = target.getAttribute('id');
+				}
+				target.classList.remove('show');
+				if(target.dataset.state == 'created') {
+					target.parentNode.removeChild(target);
+					delete layer.obj['layer'+id];
+				}
+			}
+		}
+		var qrImg;
+		var qr = function(url){
+			var googleqr = 'https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl='+url+'&choe=UTF-8';
+			qrImg = document.createElement('img');
+			qrImg.src = googleqr;
+			qrImg.style.cssText = 'width:150px;height:150px;'
+			layer.create({'id':'qrImg', 'title': '', 'content': ''});
+			document.querySelector('#qrImg .popupContents').append(qrImg);
+			layer.open('qrImg');
+		}
+
+		var listLink = function(){
+			var links = document.querySelectorAll('.link');
+			[].forEach.call(links, function(link){
+				link.addEventListener('mouseover', function(){
+					if(qrImg) qrImg.parentNode.removeChild(qrImg);
+					qr(link.href);
+				});
+			});
+		}
+
+		var fold = function(){
+			var btns = document.querySelectorAll('.btnFold');
+			var foldFunc = function(_this){
+				var wrap = _this.parentNode.parentNode;
+				var target = wrap.querySelector('.table');
+				wrap.classList.toggle('fold');
+				if(wrap.classList.contains('fold')) {
+					target.style.cssText = 'height:0;overflow:hidden;';
+				} else {
+					target.style.cssText = '';
+				}
+				
+			};
+			[].forEach.call(btns, function(btn){
+				btn.addEventListener('click', function(){
+					foldFunc(btn);
+				});
+			});
+		}
+
+		var gnb = document.querySelector('.gnb');
+		var gnbMenu = gnb.querySelectorAll('a');
+		var container = document.querySelector('.container');
+
+		var active = function(_this){
+			[].forEach.call(gnbMenu, function(link){
+				link.classList.remove('active');
+			})
+			_this.classList.add('active');
+		};
+		var ajax = function(page){
+			container.innerHTML = '';
+
+			httpRequest = new XMLHttpRequest();
+			httpRequest.onreadystatechange = function(){
+				if(this.readyState == 4 && this.status == 200) {
+					container.innerHTML = this.responseText;
+					SyntaxHighlighter.highlight();
+					fold();
+					listLink();
+				}}
+			httpRequest.open('GET', page +'.html', true);
+			httpRequest.send();
+		};
+		[].forEach.call(gnbMenu, function(link){
+			link.addEventListener('click', function(){
+				active(link);
+			});
+		});
+
+		var pageLoad = function(){
+			var hash = location.hash;
+			var pageName = hash.split('#')[1];
+			if(hash) ajax(pageName);
+		}
+		
+		window.addEventListener('hashchange', pageLoad);
+		window.addEventListener('DOMContentLoaded', pageLoad);
+		
+	</script>
+</body>
+</html>

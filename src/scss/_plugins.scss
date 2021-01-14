@@ -1,0 +1,11 @@
+.slideContainer {overflow: hidden;}
+.swiper-wrapper {
+	position: relative;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	.swiper-slide {
+		width: 100%;
+		flex-shrink: 0;
+	}
+}

@@ -1,0 +1,27 @@
+{% macro include(fileName) -%}
+{% include fileName ignore missing -%}
+{% endmacro -%}
+<!DOCTYPE html>{% set path = '/resource/' %}
+<html lang="ko">
+<head>
+	{{ include("inc/head.html") | tabIndent(1) }}
+</head>
+
+<body>
+	<div id="wrap"{%if pageVar.pageClass %} class="{{pageVar.pageClass}}"{% endif %}>
+		<!-- header -->
+		{{ include("inc/header.html") | tabIndent(2) }}
+		<!-- //header -->
+
+		<div class="container">
+			{% filter tabIndent(3) %}
+			{% block content %}{% endblock %}
+			{%- endfilter %}
+		</div>
+
+		<!-- footer -->
+		{{ include("inc/footer.html") | tabIndent(2) }}
+		<!-- //footer -->
+	</div>
+</body>
+</html>

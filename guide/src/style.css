@@ -1,0 +1,267 @@
+body {
+	-webkit-text-size-adjust: none;
+	margin: 0;
+	font: 13px/1.5 "Malgun Gothic","맑은 고딕","Helvetica Neue","Apple SD Gothic Neo",sans-serif;
+	text-shadow: rgba(0,0,0,.1) 0 0 0.45px;
+	background: #0d1117;
+	color: #c9d1d9;
+}
+h1, h2, h3, h4, h5, h6, p, figure, ul, ol, dl, dd, fieldset, pre {margin: 0;}
+ol, ul, td, fieldset {padding: 0;}
+input, select, textarea, button, pre, a {
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	line-height: inherit;
+	letter-spacing: inherit;
+	color: inherit;
+	text-decoration: none;
+}
+input, select, textarea {
+	margin: 0;
+	padding: 0;
+	appearance: none;
+	-webkit-appearance: none;
+	border-radius: 0;
+	box-sizing: border-box;
+	vertical-align: top;
+	border: 1px solid #6F7DCB;
+	border-radius: 3px;
+}
+textarea {
+	padding: 12px 20px;
+	resize: none;
+	overflow: auto;
+}
+li {list-style: none;}
+table {
+	width: 100%;
+	border-collapse: collapse;
+	border: 0;
+	table-layout: fixed;
+}
+fieldset, img {border: 0;}
+img {
+	vertical-align: top;
+	max-width: 100%;
+}
+label, td img {vertical-align: middle;}
+h1, h2, h3, h4, h5, strong, b, th {font-weight: 800;}
+legend, caption, .blind {
+	position: absolute;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip: rect(1px 1px 1px 1px);
+	word-break: initial;
+	word-wrap: initial;
+}
+address, em {font-style: normal;}
+button {
+	margin: 0;
+	padding: 0;
+	overflow: visible;
+	cursor: pointer;
+	background: none;
+	border: 0;
+	border-radius: 0;
+}
+button > span {position: relative;}
+pre {white-space: pre-line;}
+
+.inputTxt {
+	height: 41px;
+	padding: 0 20px;
+}
+.inputTxt.typeCal {
+	background: #fff url("../img/ico_cal.png") no-repeat right 11px top 50%;
+}
+select {
+	position: relative;
+	height: 41px;
+	padding: 0 30px 0 20px;
+	background: #fff url("../img/ico_arrow.png") no-repeat right 11px top 50%;
+	color: #000;
+	font-size: 14px;
+	text-align: left;
+}
+select::-ms-expand {
+	display: none;
+	opacity: 0;
+}
+select:disabled {
+	color: #bbb;
+	background: #e9e9e9;
+	border: 1px solid #d3d4d6;
+}
+.inputChk {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 0;
+	line-height: 1;
+}
+.inputChk input[type="checkbox"] {
+	position: absolute;
+	opacity: 0;
+	z-index: -1;
+}
+.inputChk input[type="checkbox"] + span, .inputChk input[type="checkbox"] + label {
+	display: inline-block;
+	cursor: pointer;
+	color: #666;
+	font-size: 13px;
+}
+.inputChk input[type="checkbox"] + span:before, .inputChk input[type="checkbox"] + label:before {
+	content: "";
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	margin-right: 6px;
+	background: #262b3e url("../img/ico_chk.png") no-repeat 50% -100%;
+	border: 1px solid #7b87a7;
+	border-radius: 2px;
+	vertical-align: middle;
+}
+.inputChk input[type="checkbox"]:disabled + label:before,
+.inputChk input[type="checkbox"]:disabled + span:before {
+	background-color: #e9e9e9;
+}
+.inputChk input[type="checkbox"]:checked + label,
+.inputChk input[type="checkbox"]:checked + span {
+	color: #fff;
+}
+.inputChk input[type="checkbox"]:checked + label:before,
+.inputChk input[type="checkbox"]:checked + span:before {
+	background-position: 50% 50%;
+}
+.btnWrap {
+	display: flex;
+	justify-content: center;
+	margin-top: 40px;
+}
+[class*="btnType"] {
+	height: 41px;
+	padding: 0 20px;
+	border-radius: 3px;
+	font-size: 14px;
+}
+.table {
+	border-top: 1px solid #30363d;
+}
+.table th, .table td {
+	padding: 5px;
+	border-bottom: 1px solid #30363d;
+}
+.table th {background: #21262d;}
+.table tbody tr:hover {background: #161b22;}
+.table td:last-child {text-align: center;}
+
+.subTit {
+	position: relative;
+	margin: 0 0 10px;
+	color: #f0f6fc;
+}
+.subTit .btnFold {
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%; height: 100%;
+	font-size: 0;
+}
+.subTit .btnFold:after {
+	content: "";
+	position: absolute;
+	top: 10px; right: 10px;
+	border-top: 8px solid #fff;
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+}
+.fold .btnFold:after {transform: rotate(180deg);}
+
+.header {
+	display: flex;
+	align-items: center;
+	background: #161b22;
+	color: #f0f6fc;
+}
+.header .logo {padding: 15px 30px 15px 20px;}
+.header .gnb a {
+	position: relative;
+	display: inline-block;
+	margin-right: 20px;
+}
+.header .gnb a.active:after {
+	content: "";
+	position: absolute;
+	right: 0; bottom: 0; left:0;
+	border-bottom: 1px solid;
+}
+.container {padding: 30px;}
+.container > section ~ section {margin-top: 25px;}
+
+.layerPopup {
+	display: none;
+	position: fixed;
+	z-index: 1000;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	text-align: center;
+}
+.layerPopup:after {
+	content: "";
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+}
+.layerPopup.show {
+	display: block;
+}
+.layerPopup .popupContents {
+	max-height: 70vh;
+	overflow: auto;
+}
+.layerPopup .bg {
+	position: absolute;
+}
+.layerPopup .btnClose {
+	position: absolute;
+	top: 24px;
+	right: 40px;
+	height: 31px;
+	padding: 0 12px 0 9px;
+	background: #dadbeb;
+	border: 1px solid #303356;
+	border-radius: 3px;
+	color: #303456;
+	font-size: 14px;
+}
+.layerPopup .btnClose span:before {
+	content: "";
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	margin-right: 6px;
+	background: url("../img/ico_close.png") no-repeat;
+	vertical-align: middle;
+}
+.popupWrap {
+	position: relative;
+	display: inline-block;
+	box-sizing: border-box;
+	padding: 30px 40px;
+	background: #fff;
+	vertical-align: middle;
+	text-align: left;
+	box-shadow: 3px 4px 24px rgba(0, 0, 0, 0.33);
+}
+.popupHeader {
+	margin: 0 0 10px;
+}
+.popupHeader .title {
+	font-family: 'ns';
+	font-weight: 800;
+	font-size: 24px;
+	color: #090a11;
+}
