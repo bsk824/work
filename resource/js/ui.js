@@ -107,4 +107,3 @@ var getUrlParams = function getUrlParams() {
 window.addEventListener('DOMContentLoaded', function () {
   device.init();
 });
-//# sourceMappingURL=ui.js.map
