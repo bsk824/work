@@ -27,20 +27,30 @@ body {
 
 .guide__table {
 	border-top: 1px solid #30363d;
+	text-align: left;
 }
 .guide__table th, .guide__table td {
-	padding: 5px;
+	padding: 5px 20px;
 	border-bottom: 1px solid #30363d;
 }
 .guide__table th {background: #21262d;}
 .guide__table tbody tr:hover {background: #161b22;}
-.guide__table td:last-child {text-align: center;}
 .guide__table td .mo ~ img {
 	display: none;
 	position: fixed;
 	right: 20px; bottom: 20px;
 }
 .guide__table td .mo:hover ~ img {display: block;}
+
+.guide__table .colorChip {
+	display: inline-block;
+	width: 60px;
+	vertical-align: top;
+}
+.guide__table .colorChip span {
+	display: block; height: 50px;
+	border: 1px solid #30363d;
+}
 
 .guide__subTit {
 	position: relative;
