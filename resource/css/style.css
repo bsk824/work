@@ -56,8 +56,8 @@
 @font-face {
 	font-family: 'ng';
 	font-weight: 400;
-	src: url(../font/ng/NanumGothicR.eot);
-	src: url(../font/ng/NanumGothicR.eot?#iefix) format("embedded-opentype"), url(../font/ng/NanumGothicR.woff) format("woff"), url(../font/ng/NanumGothicR.woff2) format("woff2");
+	src: url(../font/ng/NanumGothic.eot);
+	src: url(../font/ng/NanumGothic.eot?#iefix) format("embedded-opentype"), url(../font/ng/NanumGothic.woff) format("woff"), url(../font/ng/NanumGothic.woff2) format("woff2");
 }
 @font-face {
 	font-family: 'ng';
@@ -74,7 +74,7 @@
 body {
 	-webkit-text-size-adjust: none;
 	margin: 0;
-	font: 14px/1.5 "ng", "Malgun Gothic", "맑은 고딕", "Helvetica Neue", "Apple SD Gothic Neo", sans-serif;
+	font: 14px/1.5 "noto", "Malgun Gothic", "맑은 고딕", "Helvetica Neue", "Apple SD Gothic Neo", sans-serif;
 	background: #1D1F40;
 	color: #fff;
 }

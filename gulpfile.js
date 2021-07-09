@@ -22,6 +22,18 @@ const manageEnvironment = (environment) => {
 		return str;
 	});
 };
+gulp.task('guide', () => {
+	return gulp.src('./guide/src/*.html')
+		.pipe(nunjucksRender({
+			envOptions: {
+				autoescape: false
+			},
+			manageEnv: manageEnvironment,
+			path: ['./guide/list','./guide/src']
+		}))
+		.pipe(gulp.dest('./guide/'))
+		.pipe(browserSync.reload({ stream: true }));
+});
 gulp.task('html', () => {
 	return gulp.src(path.src + 'html/**/*.html')
 		.pipe(nunjucksRender({
@@ -92,9 +104,10 @@ gulp.task('browserSync', () => {
 	})
 });
 gulp.task('watch', () => {
+	gulp.watch('./guide/list/*.html', gulp.series('guide'));
 	gulp.watch(path.src + '**/*.html', gulp.series('html'));
 	gulp.watch(path.src + '**/*.scss', gulp.series('scss'));
 	gulp.watch(path.src + '**/*.js', gulp.series('js'));
 });
 
-gulp.task('default', gulp.parallel('html','scss','js','watch','browserSync'));
+gulp.task('default', gulp.parallel('guide','html','scss','js','watch','browserSync'));
