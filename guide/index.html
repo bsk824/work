@@ -75,8 +75,8 @@
 						<th scope="row">BG 컬러</th>
 						<td>
 							<span class="colorChip">
-								<span style="background: #30363d;"></span>
-								#30363d
+								<span style="background: #161b22;"></span>
+								#161b22
 							</span>
 						</td>
 					</tr>
@@ -127,7 +127,7 @@
 					})
 					_this.classList.add('active');
 					ajax(_this.dataset.page);
-					history.pushState({'name': _this.dataset.page},'',_this.dataset.page);
+					history.pushState({'name': _this.dataset.page},'','index.html?page='+_this.dataset.page);
 				};
 				window.addEventListener('popstate', function(e){
 					ajax(e.state.name);
