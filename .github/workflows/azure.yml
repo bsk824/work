@@ -12,8 +12,6 @@ jobs:
     environment: production
     steps:
     - uses: actions/checkout@v2
-      with:
-        args: deploy --only hosting
     - name: Use Node.js ${{ env.NODE_VERSION }}
       uses: actions/setup-node@v2
       with:
@@ -23,3 +21,9 @@ jobs:
         npm install gulp -g
         npm install
         gulp build
+    - name: Deploy Build Files
+      run: |
+        git init
+        git add -A
+        git commit -m 'deploy'
+        git push
