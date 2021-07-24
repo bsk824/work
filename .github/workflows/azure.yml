@@ -1,9 +1,9 @@
 on: [push]
 
 env:
-  AZURE_WEBAPP_NAME: work    # set this to your application's name
-  AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
-  NODE_VERSION: '14.17.3'                # set this to the node version to use
+  AZURE_WEBAPP_NAME: work
+  AZURE_WEBAPP_PACKAGE_PATH: '.'
+  NODE_VERSION: '14.17.3'
 
 jobs:
   build-and-deploy:
@@ -18,11 +18,11 @@ jobs:
         node-version: ${{ env.NODE_VERSION }}
     - name: npm install, build, and test
       run: |
-        # Build and test the project, then
-        # deploy to Azure Web App.
         npm install gulp -g
         npm install
         gulp build
+    - name: move build files to static files repo
+      run: |
         mkdir .public
         cp -r * .public
         mv .public public
