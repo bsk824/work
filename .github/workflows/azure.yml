@@ -12,6 +12,8 @@ jobs:
     environment: production
     steps:
     - uses: actions/checkout@v2
+      with:
+        args: deploy --only hosting
     - name: Use Node.js ${{ env.NODE_VERSION }}
       uses: actions/setup-node@v2
       with:
