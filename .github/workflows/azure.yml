@@ -21,8 +21,3 @@ jobs:
         npm install gulp -g
         npm install
         gulp build
-    - name: move build files to static files repo
-      run: |
-        mkdir .resource
-        cp -r * .resource
-        mv .resource resource
