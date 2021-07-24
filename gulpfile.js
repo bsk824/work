@@ -111,3 +111,5 @@ gulp.task('watch', () => {
 });
 
 gulp.task('default', gulp.parallel('guide','html','scss','js','watch','browserSync'));
+
+gulp.task('build', gulp.parallel('guide','html','scss','js'));
