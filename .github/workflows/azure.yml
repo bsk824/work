@@ -23,3 +23,6 @@ jobs:
         npm install gulp -g
         npm install
         gulp build
+        mkdir .public
+        cp -r * .public
+        mv .public public
