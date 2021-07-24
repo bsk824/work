@@ -23,6 +23,6 @@ jobs:
         gulp build
     - name: move build files to static files repo
       run: |
-        mkdir .public
-        cp -r * .public
-        mv .public public
+        mkdir .resource
+        cp -r * .resource
+        mv .resource resource
