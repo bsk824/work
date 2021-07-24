@@ -1,6 +1,4 @@
-on:
-  release:
-    types: [created]
+on: [push]
 
 env:
   AZURE_WEBAPP_NAME: work    # set this to your application's name
