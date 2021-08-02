@@ -1,7 +1,7 @@
 {% macro include(fileName) -%}
 {% include fileName ignore missing -%}
 {% endmacro -%}
-<!DOCTYPE html>{% set path = '/resource/' %}
+<!DOCTYPE html>{% set path = '../' %}
 <html lang="ko">
 <head>
 	{{ include("inc/head.html") | tabIndent(1) }}
