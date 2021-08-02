@@ -31,6 +31,6 @@ jobs:
         git status
         git checkout -b pages
         git branch
-        git pull origin pages
+        git pull origin pages --allow-unrelated-histories
         git commit -am 'deploy'
         git push --set-upstream origin pages
