@@ -73,6 +73,15 @@ gulp.task('scss', () => {
 		.pipe(gulp.dest(path.dest + 'css'))
 		.pipe(browserSync.reload({ stream: true }));
 });
+gulp.task('scss:pd', () => {
+	return gulp
+		.src(path.src + 'scss/**/*.scss')
+		.pipe(scss(scssOptions).on('error', scss.logError))
+		.pipe(dgbl())
+		.pipe(rename(cssName))
+		.pipe(gulp.dest(path.dest + 'css'))
+		.pipe(browserSync.reload({ stream: true }));
+});
 gulp.task('scss:mo', () => {
 	return gulp
 		.src(pathCommon.src + '/mo/**/*.scss')
@@ -112,4 +121,4 @@ gulp.task('watch', () => {
 
 gulp.task('default', gulp.parallel('guide','html','scss','js','watch','browserSync'));
 
-gulp.task('build', gulp.parallel('guide','html','scss','js'));
+gulp.task('build', gulp.parallel('guide','html','scss:pd','js'));
