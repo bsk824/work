@@ -21,18 +21,14 @@ jobs:
         npm install gulp -g
         npm install
         gulp build
-    - name: move files
-      run : |
-        mkdir repo
-        rm -rf ./repo/*
-        mv ./resource/* ./repo/
     - name: Deploy Build Files
       run: |
-        cd ./repo
         git init
         git config --global user.email "bsk824@gmail.com"
         git config --global user.name "Seungki Baek"
+        git add .
+        git status
         git checkout -b pages
-        git add -A
-        git commit -m 'deploy'
-        git push --set-upstream pages pages
+        git branch
+        git commit -am 'deploy'
+        git push
