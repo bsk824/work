@@ -23,6 +23,7 @@ jobs:
         gulp build
     - name: move files
       run : |
+        mkdir repo
         rm -rf ../repo/*
         mv ./resource/* ../repo/
     - name: Deploy Build Files
