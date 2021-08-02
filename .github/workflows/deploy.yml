@@ -23,6 +23,7 @@ jobs:
 #         gulp build
     - name : git
       run : |
+        gh auth login
         gh repo clone bsk824/work
         git checkout -b pages
     - name: move files
