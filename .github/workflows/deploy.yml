@@ -28,5 +28,5 @@ jobs:
         git config --global user.name "Seungki Baek"
         git add .
         git checkout pages
-        git commit -m 'deploy'
+        git commit -am 'deploy'
         git push
