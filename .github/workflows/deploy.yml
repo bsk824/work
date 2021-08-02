@@ -16,11 +16,11 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ env.NODE_VERSION }}
-    - name: npm install, build, and test
-      run: |
-        npm install gulp -g
-        npm install
-        gulp build
+#     - name: npm install, build, and test
+#       run: |
+#         npm install gulp -g
+#         npm install
+#         gulp build
     - name: move files
       run : |
         mkdir repo
@@ -35,4 +35,4 @@ jobs:
         git checkout -b pages
         git add -A
         git commit -m 'deploy'
-        git push origin pages
+        git push
