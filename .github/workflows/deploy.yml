@@ -16,22 +16,15 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ env.NODE_VERSION }}
-    - name: npm install, build, and test
+    - name: npm install, build
       run: |
         npm install
         gulp build
-#     - name: Deploy Build Files
-#       run: |
-#         git init
-#         git config --global user.email "bsk824@gmail.com"
-#         git config --global user.name "Seungki Baek"
-#         git add .
-#         git commit -am 'deploy'
-#         git push
     - name: move files
       run : |
         mkdir repo
         rm -rf ./repo/*
+        mv ./guide ./repo/
         mv ./resource/* ./repo/
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
