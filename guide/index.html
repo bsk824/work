@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>HTML 가이드</title>
+	<link rel="stylesheet" href="../resource/css/style.css">
+	<script src="../resource/js/ui.js"></script>
+	<link rel="stylesheet" href="src/style.css">
+	<link rel="stylesheet" href="src/shCoreDefault.min.css">
+	<script src="src/shCore.min.js"></script>
+	<script src="src/shBrushCss.min.js"></script>
+	<script src="src/shBrushJScript.min.js"></script>
+	<script src="src/shBrushXml.min.js"></script>
+	
+</head>
+<body>
+	<header class="guide__header">
+		<h1 class="guide__header-logo"><a href="/guide/">GUIDE</a></h1>
+		<nav class="guide__header-gnb">
+			<button type="button" data-page="filelist">FILELIST</button>
+			<button type="button" data-page="guide_markup">MARKUP</button>
+			<button type="button" data-page="guide_js">JS</button>
+		</nav>
+	</header>
+	<div class="guide__container">
+
+		<div class="guide__table">
+			<table>
+				<colgroup>
+					<col style="width: 200px;">
+					<col>
+				</colgroup>
+				<tbody>
+					
+					<tr>
+						<th scope="row">lang</th>
+						<td>HTML5, SCSS, JS</td>
+					</tr>
+					<tr>
+						<th scope="row">브라우져</th>
+						<td>ie11, 크롬</td>
+					</tr>
+					<tr>
+						<th scope="row">모바일</th>
+						<td>ios12, android11</td>
+					</tr>
+					<tr>
+						<th scope="row">font</th>
+						<td>Noto Sans CJK KR</td>
+					</tr>
+					<tr>
+						<th scope="row">폰트 컬러</th>
+						<td>
+							<span class="colorChip">
+								<span style="background: #000;"></span>
+								#000
+							</span>
+							<span class="colorChip">
+								<span style="background: #fff;"></span>
+								#fff
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">라인 컬러</th>
+						<td>
+							<span class="colorChip">
+								<span style="background: #30363d;"></span>
+								#30363d
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">BG 컬러</th>
+						<td>
+							<span class="colorChip">
+								<span style="background: #161b22;"></span>
+								#161b22
+							</span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+
+
+	<script>
+		var guideFunc = {
+			qrSet: function(){
+				var qrImg;
+				var qrMake = function(url){
+					var googleQr = 'https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl='+url+'&choe=UTF-8';
+					qrImg = document.createElement('img');
+					qrImg.src = googleQr;
+					qrImg.style.cssText = 'width:150px;height:150px;'
+				}
+
+				var links = document.querySelectorAll('.mo');
+				[].forEach.call(links, function(link){
+					qrMake(link.href);
+					link.insertAdjacentElement('afterend', qrImg);
+				});
+			},
+			fold: function(){
+				var btns = document.querySelectorAll('.btnFold');
+				var foldFunc = function(_this){
+					var wrap = _this.parentNode.parentNode;
+					var target = wrap.querySelector('.guide__table');
+					wrap.classList.toggle('fold');
+				};
+				[].forEach.call(btns, function(btn){
+					btn.addEventListener('click', function(){
+						foldFunc(btn);
+					});
+				});
+			},
+			gnbSet: function(){
+				var gnb = document.querySelector('.guide__header-gnb');
+				var gnbMenu = gnb.querySelectorAll('button');
+				var container = document.querySelector('.guide__container');
+				var active = function(_this){
+					[].forEach.call(gnbMenu, function(link){
+						link.classList.remove('active');
+					})
+					_this.classList.add('active');
+					ajax(_this.dataset.page);
+					history.pushState({'name': _this.dataset.page},'','index.html?page='+_this.dataset.page);
+				};
+				window.addEventListener('popstate', function(e){
+					ajax(e.state.name);
+				});
+				var ajax = function(page){
+					container.innerHTML = '';
+					httpRequest = new XMLHttpRequest();
+					httpRequest.onreadystatechange = function(){
+						if(this.readyState == 4 && this.status == 200) {
+							container.innerHTML = this.responseText;
+							switch (page) {
+								case 'filelist' :
+									guideFunc.qrSet();
+									guideFunc.fold();
+									break;
+								case 'guide_markup' :
+									SyntaxHighlighter.highlight();
+									break;
+								case 'guide_js' :
+									SyntaxHighlighter.highlight();
+									break;
+							}
+						}
+					}
+					httpRequest.open('GET', page+'.html', true);
+					httpRequest.send();
+				};
+				[].forEach.call(gnbMenu, function(link){
+					link.addEventListener('click', function(){
+						active(link);
+					});
+				});
+			}
+		}
+		guideFunc.gnbSet();
+	</script>
+</body>
+</html>

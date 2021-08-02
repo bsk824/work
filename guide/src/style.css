@@ -1,0 +1,75 @@
+body {
+	text-shadow: rgba(0,0,0,.1) 0 0 0.45px !important;
+	background: #0d1117 !important;
+	color: #c9d1d9 !important;
+}
+.guide__header {
+	display: flex;
+	align-items: center;
+	background: #161b22;
+	color: #f0f6fc;
+}
+.guide__header .guide__header-logo {padding: 15px 30px 15px 20px;}
+.guide__header .guide__header-gnb button {
+	position: relative;
+	display: inline-block;
+	margin-right: 20px;
+}
+.guide__header .guide__header-gnb button.active:after {
+	content: "";
+	position: absolute;
+	right: 0; bottom: 0; left:0;
+	border-bottom: 1px solid;
+}
+.guide__container {padding: 30px;}
+.guide__container > section ~ section {margin-top: 25px;}
+
+
+.guide__table {
+	border-top: 1px solid #30363d;
+	text-align: left;
+}
+.guide__table th, .guide__table td {
+	padding: 5px 20px;
+	border-bottom: 1px solid #30363d;
+}
+.guide__table th {background: #21262d;}
+.guide__table tbody tr:hover {background: #161b22;}
+.guide__table td .mo ~ img {
+	display: none;
+	position: fixed;
+	right: 20px; bottom: 20px;
+}
+.guide__table td .mo:hover ~ img {display: block;}
+
+.guide__table .colorChip {
+	display: inline-block;
+	width: 60px;
+	vertical-align: top;
+}
+.guide__table .colorChip span {
+	display: block; height: 50px;
+	border: 1px solid #30363d;
+}
+
+.guide__subTit {
+	position: relative;
+	margin: 0 0 10px;
+	color: #f0f6fc;
+}
+.guide__subTit .btnFold {
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%; height: 100%;
+	font-size: 0;
+}
+.guide__subTit .btnFold:after {
+	content: "";
+	position: absolute;
+	top: 10px; right: 10px;
+	border-top: 8px solid #fff;
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+}
+.guide__container .fold .guide__table {height: 0; overflow: hidden;}
+.guide__container .fold .btnFold:after {transform: rotate(180deg);}
