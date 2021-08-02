@@ -18,7 +18,7 @@ jobs:
         node-version: ${{ env.NODE_VERSION }}
     - name: npm install, build, and test
       run: |
-        yarn add
+        npm install
         gulp build
     - name: Deploy Build Files
       run: |
