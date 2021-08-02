@@ -30,5 +30,6 @@ jobs:
         git status
         git checkout -b pages
         git branch
+        git pull
         git commit -am 'deploy'
         git push --set-upstream origin pages
