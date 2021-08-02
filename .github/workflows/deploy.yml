@@ -28,6 +28,6 @@ jobs:
         git config pull.rebase false
         git add .
         git checkout -b pages
-        git pull
+        git pull --set-upstream origin pages
         git commit -am 'deploy'
         git push --set-upstream origin pages
