@@ -28,8 +28,13 @@ jobs:
 #         git add .
 #         git commit -am 'deploy'
 #         git push
+    - name: move files
+      run : |
+        mkdir repo
+        rm -rf ./repo/*
+        mv ./resource/* ./repo/
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./resource
+        publish_dir: ./repo
