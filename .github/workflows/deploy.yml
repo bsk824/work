@@ -35,4 +35,4 @@ jobs:
         git checkout -b pages
         git add -A
         git commit -m 'deploy'
-        git push orgin master
+        git push origin pages
