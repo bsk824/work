@@ -31,4 +31,4 @@ jobs:
         git checkout -b pages
         git branch
         git commit -am 'deploy'
-        git push
+        git push --set-upstream origin pages
