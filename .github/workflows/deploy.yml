@@ -32,7 +32,6 @@ jobs:
         git init
         git config --global user.email "bsk824@gmail.com"
         git config --global user.name "Seungki Baek"
-        git remote add pages https://github.com/bsk824/work.git
         git checkout -b pages
         git add -A
         git commit -m 'deploy'
