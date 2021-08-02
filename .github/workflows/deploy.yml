@@ -36,4 +36,4 @@ jobs:
         git checkout -b pages
         git add -A
         git commit -m 'deploy'
-        git push pages
+        git push --set-upstream pages pages
